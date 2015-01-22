@@ -11,6 +11,17 @@ class RPNExpression
   #
   # @return [Numeric] the evaluated RPN expression
   def evaluate
-    "Implement RPNExpression#evaluate in #{__FILE__}"
+    stack = []
+    operands = []
+    @expr.split.each do |i|
+      case i
+      when /\d/
+        stack.push(i.to_i)
+      when "+", "-", "*", "/"
+        operands = stack.pop(2)
+        stack.push(operands[0].send(i, operands[1]))
+      end
+    end
+    stack
   end
 end
