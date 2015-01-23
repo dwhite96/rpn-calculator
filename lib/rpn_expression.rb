@@ -12,7 +12,6 @@ class RPNExpression
   # @return [Numeric] the evaluated RPN expression
   def evaluate
     stack = []
-    operands = []
     @expr.split.each do |i|
       case i
       when /\d/
