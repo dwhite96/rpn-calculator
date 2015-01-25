@@ -21,6 +21,6 @@ class RPNExpression
         stack.push(operands[0].send(i, operands[1]))
       end
     end
-    stack
+    stack.pop
   end
 end
