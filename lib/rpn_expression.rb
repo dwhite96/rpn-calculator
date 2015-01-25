@@ -12,13 +12,13 @@ class RPNExpression
   # @return [Numeric] the evaluated RPN expression
   def evaluate
     stack = []
-    @expr.split.each do |i|
-      case i
+    @expr.split.each do |token|
+      case token
       when /\d/
-        stack.push(i.to_i)
+        stack.push(token.to_i)
       when "+", "-", "*", "/"
         operands = stack.pop(2)
-        stack.push(operands[0].send(i, operands[1]))
+        stack.push(operands[0].send(token, operands[1]))
       end
     end
     stack.pop
