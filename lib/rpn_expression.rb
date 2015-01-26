@@ -14,7 +14,7 @@ class RPNExpression
     stack = []
     @expr.split.each do |token|
       case token
-      when /\d/
+      when /\d+/
         stack.push(token.to_i)
       when "+", "-", "*", "/"
         operands = stack.pop(2)
